@@ -36,6 +36,11 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def import
+    Product.import(params[:file])
+    redirect_to products_path, notice: "Products added successfully"
+  end
+
   private
     def find_product
       @product = Product.find(params[:id])

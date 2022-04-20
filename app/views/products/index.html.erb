@@ -1,7 +1,13 @@
 <h1>Products#index</h1>
 <ul>
-    <% @products.each do |product|%>
-        <li><%= link_to product.name, product_path(product)%></li>
-    <%end%>
+  <% @products.each do |product|%>
+    <li><%= link_to product.name, product_path(product)%></li>
+  <%end%>
 </ul>
 <%= button_to "Add New Product", new_product_path, method: :get %>
+
+<h3>Import Products</h3>
+<%= form_tag import_products_path, multipart: true do%>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Products"%>
+<% end %>
